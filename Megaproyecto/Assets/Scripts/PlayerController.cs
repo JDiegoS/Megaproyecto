@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
                 moveTo.y = jumpForce;
             }
         }
-
-        controller.Move(moveTo * Time.deltaTime);
+        if (transform.position.x <= 10 || movementx < 0)
+            controller.Move(moveTo * Time.deltaTime);
 
         if (Input.GetButtonDown("Fire1") && !fired)
         {
@@ -65,15 +65,15 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-
+    
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
        
 
         if (hit.gameObject.tag == "ball")
         {
-            float forceA = 3;
+            float forceA = 2;
             
             Rigidbody rb = hit.collider.attachedRigidbody;
 
@@ -83,9 +83,16 @@ public class PlayerController : MonoBehaviour
                 forceD.z = 0;
                 if (fired)
                 {
-                    forceA = hitForce;
-                    forceD.y *= 4;
-                    forceD.x *= 2;
+                    forceA = 4;
+                    //forceD.y *= 4;
+                    //forceD.x *= 2;
+                    rb.AddForce(gameObject.transform.up * hitForce, ForceMode.Impulse);
+                    fired = false;
+                    firedTime = 0;
+                    forceD.Normalize();
+                    rb.AddForceAtPosition(forceD * forceA, transform.position, ForceMode.Impulse);
+                    return;
+
                 }
 
                 forceD.Normalize();

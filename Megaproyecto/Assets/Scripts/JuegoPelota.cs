@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class JuegoPelota : MonoBehaviour
 {
 
+    public GameObject enemy;
     public GameObject player1;
     public CharacterController player1cc;
     public GameObject pelota;
+    private Rigidbody rbPelota;
 
     public Transform player1Spawn;
+    public Transform enemySpawn;
 
     public Text scoreText;
     private int score1 = 0;
     private int score2 = 0;
 
 
+    private void Start()
+    {
+        rbPelota = pelota.GetComponent<Rigidbody>();
+    }
     public void updateScore()
     {
         if(score1 == 3)
@@ -29,6 +36,8 @@ public class JuegoPelota : MonoBehaviour
             return;
         }
         scoreText.text = score1 + "-" + score2;
+
+
     }
     public void scoreTeam1()
     {
@@ -49,6 +58,26 @@ public class JuegoPelota : MonoBehaviour
         player1.transform.position = player1Spawn.position;
         player1cc.enabled = true;
 
+        enemy.transform.position = enemySpawn.position;
+
+        rbPelota.velocity = Vector3.zero;
+        rbPelota.angularVelocity = Vector3.zero;
         pelota.transform.position = new Vector3(10, 1, -3);
+
+        StartCoroutine(GamePauser());
+
+    }
+
+    public IEnumerator GamePauser()
+    {
+        Debug.Log("Inside PauseGame()");
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
+        Debug.Log("Done with my pause");
     }
 }
