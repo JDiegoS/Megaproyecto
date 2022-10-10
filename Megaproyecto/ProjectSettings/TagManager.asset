@@ -9,6 +9,8 @@ TagManager:
   - ball
   - wall
   - enemy
+  - invisible wall
+  - ant
   layers:
   - Default
   - TransparentFX

@@ -18,4 +18,17 @@ public class CameraController : MonoBehaviour
     {
         transform.position = target.position + offset;
     }
+
+    public void ChangeTarget(int player)
+    {
+        if (player == 2) {
+            target = GameObject.FindGameObjectWithTag("ant").transform;
+            offset = transform.position - target.position;
+        }
+        else
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            offset = transform.position - target.position;
+        }
+    }
 }

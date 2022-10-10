@@ -29,10 +29,12 @@ public class JuegoPelota : MonoBehaviour
         if(score1 == 3)
         {
             scoreText.text = "GANO EQUIPO 1";
+            Time.timeScale = 0f;
             return;
         }
         else if(score2 == 3){
             scoreText.text = "GANO EQUIPO 2";
+            Time.timeScale = 0f;
             return;
         }
         scoreText.text = score1 + "-" + score2;
@@ -70,7 +72,6 @@ public class JuegoPelota : MonoBehaviour
 
     public IEnumerator GamePauser()
     {
-        Debug.Log("Inside PauseGame()");
         Time.timeScale = 0f;
         float pauseEndTime = Time.realtimeSinceStartup + 2f;
         while (Time.realtimeSinceStartup < pauseEndTime)
@@ -78,6 +79,5 @@ public class JuegoPelota : MonoBehaviour
             yield return 0;
         }
         Time.timeScale = 1f;
-        Debug.Log("Done with my pause");
     }
 }
