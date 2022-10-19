@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     public GameObject PauseMenu;
     public Slider audioSlider;
+    public bool mainMenu = false;
 
     private string currentScene;
     private bool paused;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && currentScene != "MainMenu")
+        if (Input.GetKeyDown(KeyCode.Escape) && !mainMenu)
         {
             if (!paused)
             {
@@ -84,6 +85,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(currentScene);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 
