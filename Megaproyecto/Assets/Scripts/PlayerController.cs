@@ -42,8 +42,9 @@ public class PlayerController : MonoBehaviour
             }
         }
         controller.Move(moveTo * Time.deltaTime);
-
-
+        if (movementx != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(new Vector3(moveTo.x * -1, 0, 0));
+        }
     }
-
 }

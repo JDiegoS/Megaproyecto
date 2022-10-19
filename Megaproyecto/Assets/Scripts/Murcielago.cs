@@ -8,9 +8,10 @@ public class Murcielago : MonoBehaviour
     public Transform startPosition;
     public Transform endPosition;
     public bool lookingLeft;
+    public Nivel3 manager;
     public GameObject player;
 
-    private Rigidbody playerRb;
+    public PlayerNivel3 playerManager;
     private bool changedPosition;
     private float changedTime = 5f;
     private bool chasing = false;
@@ -21,11 +22,11 @@ public class Murcielago : MonoBehaviour
     {
         if (lookingLeft)
         {
-            target = new Vector3(startPosition.position.x, 0, 0);
+            target = new Vector3(startPosition.position.x, transform.position.y, transform.position.z);
         }
         else
         {
-            target = new Vector3(endPosition.position.x, 0, 0);
+            target = new Vector3(endPosition.position.x, transform.position.y, transform.position.z);
 
         }
         newPosition();
@@ -34,6 +35,19 @@ public class Murcielago : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerManager.safe)
+        {
+            
+            chasing = false;
+        }
+        else
+        {
+            float dist = Vector3.Distance(transform.position, player.transform.position);
+            if (dist < 10)
+            {
+                chasing = true;
+            }
+        }
         if (changedPosition)
         {
             if (changedTime > 0)
@@ -91,10 +105,21 @@ public class Murcielago : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player" && !playerManager.safe)
+        {
+            manager.LostGame();
+        }
+    }
+
     private void newPosition()
     {
-        target = new Vector3(target.x, Random.Range(0.0f, 10.0f), 0);
+        target = new Vector3(target.x, Random.Range(0.0f, 10.0f), transform.position.z);
         changedPosition = true;
         changedTime = 3;
     }
+
+
 }
