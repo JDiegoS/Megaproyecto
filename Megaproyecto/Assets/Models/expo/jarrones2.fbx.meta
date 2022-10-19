@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 817853f3f6cadf14bb861cbc6e257d10
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: -6466284372396101127
+    second: Vase_01|Camera001|Take 001|BaseLayer
+  - first:
+      74: 1193556583474856351
+    second: Vase_01|FillLight|Take 001|BaseLayer
+  - first:
+      74: -1615567665656249334
+    second: Vase_01|FoodCard|Take 001|BaseLayer
+  - first:
+      74: -8678794911732130356
+    second: Vase_01|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 7741752735088650177
+    second: Vase_01|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 3317980788650111684
+    second: Vase_01|leftWing|Take 001|BaseLayer
+  - first:
+      74: 5780963018275065190
+    second: Vase_01|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 6049465327113163255
+    second: Vase_01|rightWing|Take 001|BaseLayer
+  - first:
+      74: 7180389483579084864
+    second: Vase_01|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -5785250483607032765
+    second: Vase_01|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -2368453114511139397
+    second: Vase_01|Vase_02|Take 001|BaseLayer
+  - first:
+      74: -6828329192872080323
+    second: Vase_01|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 3993267016864072531
+    second: Vase_01|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: 6143557128509894874
+    second: Vase_01|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: 8156340489191522373
+    second: Vase_01|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: -5132351999145647099
+    second: Vase_02|Camera001|Take 001|BaseLayer
+  - first:
+      74: 4923508744908032285
+    second: Vase_02|FillLight|Take 001|BaseLayer
+  - first:
+      74: -1727266024135961637
+    second: Vase_02|FoodCard|Take 001|BaseLayer
+  - first:
+      74: 1502143121371185531
+    second: Vase_02|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 9185945352434437751
+    second: Vase_02|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 8622238869551006833
+    second: Vase_02|leftWing|Take 001|BaseLayer
+  - first:
+      74: -3168943260571483776
+    second: Vase_02|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 317998081202920175
+    second: Vase_02|rightWing|Take 001|BaseLayer
+  - first:
+      74: 4026395734728326254
+    second: Vase_02|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: 3134738637968240176
+    second: Vase_02|Vase_01|Take 001|BaseLayer
+  - first:
+      74: 581070555963244267
+    second: Vase_02|Vase_02|Take 001|BaseLayer
+  - first:
+      74: 4964440397655459122
+    second: Vase_02|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 847378772715739512
+    second: Vase_02|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -426357121023558899
+    second: Vase_02|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -7953915170532521449
+    second: Vase_02|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: 3213918682254695308
+    second: Vase_03|Camera001|Take 001|BaseLayer
+  - first:
+      74: -104229605278032971
+    second: Vase_03|FillLight|Take 001|BaseLayer
+  - first:
+      74: -9177771144258770357
+    second: Vase_03|FoodCard|Take 001|BaseLayer
+  - first:
+      74: 1205707706742284654
+    second: Vase_03|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 6004731028288449002
+    second: Vase_03|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 2466853077134037965
+    second: Vase_03|leftWing|Take 001|BaseLayer
+  - first:
+      74: -8641190425883695337
+    second: Vase_03|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 1396568235727062786
+    second: Vase_03|rightWing|Take 001|BaseLayer
+  - first:
+      74: 6074651332424934173
+    second: Vase_03|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -6206772941500061058
+    second: Vase_03|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -5227166854927144893
+    second: Vase_03|Vase_02|Take 001|BaseLayer
+  - first:
+      74: -8072473952165875202
+    second: Vase_03|Vase_03|Take 001|BaseLayer
+  - first:
+      74: -2237131600581570915
+    second: Vase_03|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -4522946798419437945
+    second: Vase_03|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -7197083662461617910
+    second: Vase_03|VRayCam004|Take 001|BaseLayer
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
