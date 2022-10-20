@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: vase004
-    second: {fileID: -4163170327692077165, guid: ef0659635fc12054c83a08986114fb0c, type: 3}
+    second: {fileID: 4690130657024694923, guid: ef0659635fc12054c83a08986114fb0c, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

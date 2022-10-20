@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 485b4b026684d2c49b405f387638e105
+guid: 76616afeac168d74e9966112ba48c579
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -23,77 +23,77 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cinturon
-    second: {fileID: 2100000, guid: 50082f8ad0abf9b4aafe5d593a2d2c64, type: 2}
+    second: {fileID: 2100000, guid: ba71492de63021e45910db2f047e11b7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cuchillo
-    second: {fileID: 2100000, guid: b43f2682bfd2d3a46b05272b6cef246e, type: 2}
+    second: {fileID: 2100000, guid: 0ae09a5b2a99d184399c9abcc3e5f424, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: DIadema
-    second: {fileID: 2100000, guid: a4ca3d0246e5c9f4fa386e2f3e263dad, type: 2}
+    second: {fileID: 2100000, guid: 6c3248eff8583e74d9048198375ca8f1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: NUDOcinturon
-    second: {fileID: 2100000, guid: 29415a153a28cc249b4f9a357c332fe5, type: 2}
+    second: {fileID: 2100000, guid: 178811f40467c7a4cb56888607719252, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pelo
-    second: {fileID: 2100000, guid: 76543b99c94e2824ab456a4e513622ae, type: 2}
+    second: {fileID: 2100000, guid: 086d2af98ee8f724fb84d90dcbca64e2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: centrito
-    second: {fileID: 2100000, guid: d6deb6d899f3f4d4296ff1141b8a0507, type: 2}
+    second: {fileID: 2100000, guid: 1ef196ba0e82c1e4cba588c6fb8df18e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: circulo centro
-    second: {fileID: 2100000, guid: ef10dad31a6236546b767de4e4b9a76f, type: 2}
+    second: {fileID: 2100000, guid: 1ef196ba0e82c1e4cba588c6fb8df18e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: collar grueso
-    second: {fileID: 2100000, guid: 58ed139b3a1083e49bbe3875d85be035, type: 2}
+    second: {fileID: 2100000, guid: fb66561d2533eb5468a0e7d37a57d008, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: collaresssxs
-    second: {fileID: 2100000, guid: 9bab9f64a59771d48b3ed37c651072b4, type: 2}
+    second: {fileID: 2100000, guid: 67becab7c7bef8a48b6496b7bf04cb2a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cuerpoPiel
-    second: {fileID: 2100000, guid: 11ac458eeae26dc4abf97ceeeee0c90c, type: 2}
+    second: {fileID: 2100000, guid: 0cac0465e090a2349bd1ab5da6bcf449, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: muniequeras
-    second: {fileID: 2100000, guid: f06c9364dab31144a991609b3c07c184, type: 2}
+    second: {fileID: 2100000, guid: f01fb295d4032cb4eb19aaee96f67929, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: nudoropa
-    second: {fileID: 2100000, guid: bbb6fc10bf0e57c449f484fd0ece4317, type: 2}
+    second: {fileID: 2100000, guid: 649b3084d39d879408128e00dd18af41, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ojoblanco
-    second: {fileID: 2100000, guid: fea6e8d6675f3584ba7f3a13da40488c, type: 2}
+    second: {fileID: 2100000, guid: 7e251ea2ce07ddf429c6d9fbb86a168f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ojoss
-    second: {fileID: 2100000, guid: 59cc3e6373b6da140bbe13b991a92b2c, type: 2}
+    second: {fileID: 2100000, guid: 788aa6f2c3b24ce4eb54085f6c9e8806, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: trajecompleto
-    second: {fileID: 2100000, guid: 52891ee9bb0096140969b2d16314babe, type: 2}
+    second: {fileID: 2100000, guid: b9445e6015fb1694fa0557c7cfc11241, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

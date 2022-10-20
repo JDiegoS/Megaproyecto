@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: azuk
-    second: {fileID: 2100000, guid: 52891ee9bb0096140969b2d16314babe, type: 2}
+    second: {fileID: 2100000, guid: f01fb295d4032cb4eb19aaee96f67929, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
