@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject canvas;
     public GameObject PauseMenu;
+    public GameObject MainUI;
+    public GameObject Victoria;
+    public GameObject Derrota;
     public Slider audioSlider;
+    public AudioManager audioManager;
     public bool mainMenu = false;
 
     private string currentScene;
@@ -22,19 +25,36 @@ public class GameManager : MonoBehaviour
         {
             if (!paused)
             {
-                canvas.SetActive(true);
-                PauseMenu.SetActive(true);
-                Time.timeScale = 0;
-                paused = true;
+                Pause();
             }
             else
             {
-                canvas.SetActive(false);
-                paused = false;
-                Time.timeScale = 1;
+                Resume();
 
             }
         }
+    }
+
+    public void Victory()
+    {
+        MainUI.SetActive(false);
+        Victoria.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Defeat()
+    {
+        MainUI.SetActive(false);
+        Derrota.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void Pause()
+    {
+        audioManager.Play("Click");
+        PauseMenu.SetActive(true);
+        MainUI.SetActive(false);
+        Time.timeScale = 0;
+        paused = true;
     }
 
     public void ChangeVolume()
@@ -44,8 +64,11 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        audioManager.Play("Click");
+        paused = false;
         Time.timeScale = 1;
-        canvas.SetActive(false);
+        MainUI.SetActive(true);
+        PauseMenu.SetActive(false);
     }
 
     public void Home()
@@ -53,6 +76,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
         currentScene = "MainMenu";
+        audioManager.Play("Credits");
     }
 
     public void Nivel1()
@@ -64,14 +88,14 @@ public class GameManager : MonoBehaviour
     public void Nivel2()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Nivel2");
         currentScene = "Nivel2";
+        SceneManager.LoadScene("Nivel2");
     }
     public void Nivel3()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Nivel3");
         currentScene = "Nivel3";
+        SceneManager.LoadScene("Nivel3");
     }
 
     public void JuegoPelota()

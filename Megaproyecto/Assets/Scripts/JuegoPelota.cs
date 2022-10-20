@@ -11,6 +11,7 @@ public class JuegoPelota : MonoBehaviour
     public CharacterController player1cc;
     public GameObject pelota;
     private Rigidbody rbPelota;
+    public AudioManager audioManager;
 
     public Transform player1Spawn;
     public Transform enemySpawn;
@@ -23,6 +24,7 @@ public class JuegoPelota : MonoBehaviour
     private void Start()
     {
         rbPelota = pelota.GetComponent<Rigidbody>();
+        audioManager.Play("Pelota1");
     }
     public void updateScore()
     {
@@ -43,6 +45,7 @@ public class JuegoPelota : MonoBehaviour
     }
     public void scoreTeam1()
     {
+        audioManager.Play("Collect");
         score1 += 1;
         updateScore();
         resetPositions();
@@ -50,6 +53,7 @@ public class JuegoPelota : MonoBehaviour
     }
     public void scoreTeam2()
     {
+        audioManager.Play("Collect");
         score2 += 1;
         updateScore();
         resetPositions();

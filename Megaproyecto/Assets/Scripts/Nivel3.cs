@@ -7,6 +7,8 @@ public class Nivel3 : MonoBehaviour
 {
 
     public PlayerNivel3 player;
+    public GameManager manager;
+    public AudioManager audioManager;
     public List<GameObject> zones;
 
 
@@ -23,6 +25,7 @@ public class Nivel3 : MonoBehaviour
         currentZone = 0;
         zones[currentZone].gameObject.SetActive(true);
 
+        audioManager.Play("Nivel3");
     }
     void Update()
     {
@@ -51,7 +54,7 @@ public class Nivel3 : MonoBehaviour
 
     public void LostGame()
     {
-        timeText.text = "DERROTA";
+        manager.Defeat();
         ended = true;
 
     }
@@ -59,7 +62,8 @@ public class Nivel3 : MonoBehaviour
     public void WonGame()
     {
         ended = true;
-        timeText.text = "VICTORIA";
+        manager.Victory();
+
 
     }
 

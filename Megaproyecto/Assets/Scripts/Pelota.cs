@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pelota : MonoBehaviour
 {
     public JuegoPelota manager;
+    public AudioManager audioManager;
     public BoxCollider invis;
     private SphereCollider scollider;
 
@@ -26,6 +27,10 @@ public class Pelota : MonoBehaviour
         else if (collision.gameObject.name == "Ring2")
         {
             manager.scoreTeam1();
+        }
+        if (collision.gameObject.tag == "ground" || collision.gameObject.tag == "wall")
+        {
+            audioManager.Play("Aterrizar");
         }
     }
 }

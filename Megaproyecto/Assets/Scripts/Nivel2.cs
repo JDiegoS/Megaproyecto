@@ -8,10 +8,12 @@ public class Nivel2 : MonoBehaviour
 
     public CameraController camera;
     public GameObject ant;
+    public GameManager manager;
     public GameObject player1;
     private CharacterController player1cc;
     private CharacterController ant1cc;
     private PlayerController player1script;
+    public AudioManager audioManager;
     private PlayerController antscript;
     private PlayerNivel2 player1lvl;
     private PlayerNivel2 antlvl;
@@ -32,6 +34,7 @@ public class Nivel2 : MonoBehaviour
         antscript = ant.GetComponent<PlayerController>();
         player1lvl = player1.GetComponent<PlayerNivel2>();
         antlvl = ant.GetComponent<PlayerNivel2>();
+        audioManager.Play("Nivel2");
     }
 
     void Update()
@@ -84,14 +87,15 @@ public class Nivel2 : MonoBehaviour
 
     public void TimeEnd()
     {
-        timeText.text = "DERROTA";
+        manager.Defeat();
 
     }
 
     public void WonGame()
     {
         ended = true;
-        timeText.text = "VICTORIA";
+        manager.Victory();
+
 
     }
 
