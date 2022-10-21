@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     private string currentScene;
     private bool paused;
 
+    private void Start()
+    {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -81,26 +85,32 @@ public class GameManager : MonoBehaviour
 
     public void Nivel1()
     {
+        Debug.Log("cal Nivel1");
+        
+        audioManager.Play("Nivel1");
+        currentScene = "Nivel1";
         Time.timeScale = 1;
         SceneManager.LoadScene("Nivel1");
-        currentScene = "Nivel1";
     }
     public void Nivel2()
     {
         Time.timeScale = 1;
         currentScene = "Nivel2";
+        audioManager.Play("Nivel2");
         SceneManager.LoadScene("Nivel2");
     }
     public void Nivel3()
     {
         Time.timeScale = 1;
         currentScene = "Nivel3";
+        audioManager.Play("Nivel3");
         SceneManager.LoadScene("Nivel3");
     }
 
     public void JuegoPelota()
     {
         Time.timeScale = 1;
+        audioManager.Play("Pelota1");
         SceneManager.LoadScene("JuegoPelota");
         currentScene = "JuegoPelota";
     }

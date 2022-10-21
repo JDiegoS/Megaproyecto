@@ -23,7 +23,19 @@ public class JuegoPelota : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         rbPelota = pelota.GetComponent<Rigidbody>();
+        StartCoroutine(PlayMusic());
+    }
+
+    IEnumerator PlayMusic()
+    {
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(2);
+
         audioManager.Play("Pelota1");
     }
     public void updateScore()

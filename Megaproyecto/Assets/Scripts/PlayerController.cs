@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();   
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame

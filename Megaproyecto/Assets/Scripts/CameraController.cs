@@ -23,11 +23,13 @@ public class CameraController : MonoBehaviour
     {
         if (player == 2) {
             target = GameObject.FindGameObjectWithTag("ant").transform;
+            transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
             offset = transform.position - target.position;
         }
         else
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
+            transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z);
             offset = transform.position - target.position;
         }
     }

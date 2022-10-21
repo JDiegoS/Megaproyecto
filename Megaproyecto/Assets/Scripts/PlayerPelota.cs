@@ -51,6 +51,7 @@ public class PlayerPelota : MonoBehaviour
 
         if (hit.gameObject.tag == "ball")
         {
+            Debug.Log("hit");
             float forceA = 2;
             
             Rigidbody rb = hit.collider.attachedRigidbody;
@@ -61,6 +62,8 @@ public class PlayerPelota : MonoBehaviour
                 forceD.z = 0;
                 if (fired)
                 {
+                    Debug.Log("fireeed");
+
                     forceA = 4;
                     //forceD.y *= 4;
                     //forceD.x *= 2;

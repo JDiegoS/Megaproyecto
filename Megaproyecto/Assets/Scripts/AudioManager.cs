@@ -8,19 +8,22 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    public string playingBackground;
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log(gameObject.name);
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+            
+
         }
-        else {
+        else if(instance != this) {
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -30,13 +33,27 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+
+
     }
 
     public void Play(string name)
     {
         Sound s =  Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
+        if (s == null || s.source == null)
             return;
+        if (name == "Nivel1" || name == "Nivel2" || name == "Nivel3" || name == "Pelota1" || name == "Credits")
+        {
+            if (playingBackground == "Nivel1" || playingBackground == "Nivel2" || playingBackground == "Nivel3" || playingBackground == "Pelota1" || playingBackground == "Credits")
+            {
+                Sound b = Array.Find(sounds, sound => sound.name == playingBackground);
+                b.source.Stop();
+
+            }
+            playingBackground = name;
+        }
         s.source.Play();
+
     }
 }

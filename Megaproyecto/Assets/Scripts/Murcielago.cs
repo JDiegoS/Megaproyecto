@@ -43,7 +43,7 @@ public class Murcielago : MonoBehaviour
         else
         {
             float dist = Vector3.Distance(transform.position, player.transform.position);
-            if (dist < 10)
+            if (dist < 20)
             {
                 chasing = true;
             }

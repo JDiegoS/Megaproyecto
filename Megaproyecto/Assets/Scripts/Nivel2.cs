@@ -21,21 +21,26 @@ public class Nivel2 : MonoBehaviour
 
     public Text timeText;
 
-    private int itemsCollected = 0;
-    private float timeRemaining = 20;
+    public int itemsCollected = 0;
+    public float timeRemaining = 100;
     private bool ended = false;
 
 
     private void Start()
     {
+        Time.timeScale = 1;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         player1cc = player1.GetComponent<CharacterController>();
         ant1cc = ant.GetComponent<CharacterController>();
         player1script = player1.GetComponent<PlayerController>();
         antscript = ant.GetComponent<PlayerController>();
         player1lvl = player1.GetComponent<PlayerNivel2>();
         antlvl = ant.GetComponent<PlayerNivel2>();
-        audioManager.Play("Nivel2");
     }
+
+
+
 
     void Update()
     {
@@ -55,6 +60,7 @@ public class Nivel2 : MonoBehaviour
 
     public void changeToAnt()
     {
+        player1script.animator.SetFloat("speed", 0);
         player1cc.enabled = false;
         player1script.enabled = false;
         player1lvl.enabled = false;
@@ -66,6 +72,7 @@ public class Nivel2 : MonoBehaviour
 
     public void changeToPlayer()
     {
+        antscript.animator.SetFloat("speed", 0);
         player1cc.enabled = true;
         player1script.enabled = true;
         player1lvl.enabled = true;
@@ -78,11 +85,8 @@ public class Nivel2 : MonoBehaviour
 
     public void CollectItem()
     {
+        audioManager.Play("Collect");
         itemsCollected += 1;
-        if (itemsCollected == 5)
-        {
-            WonGame();
-        }
     }
 
     public void TimeEnd()

@@ -14,19 +14,22 @@ public class Nivel3 : MonoBehaviour
 
     public Text timeText;
 
-    private float timeRemaining = 20;
+    private float timeRemaining = 60;
     private bool ended = false;
 
-    private float changedTime = 5f;
+    private float changedTime = 15f;
     private int currentZone;
 
     private void Start()
     {
+        Time.timeScale = 1;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
         currentZone = 0;
         zones[currentZone].gameObject.SetActive(true);
 
-        audioManager.Play("Nivel3");
     }
+
     void Update()
     {
         if (!ended)
@@ -74,7 +77,7 @@ public class Nivel3 : MonoBehaviour
         while (tempZone == currentZone)
             currentZone = Random.Range(0, zones.Count);
         zones[currentZone].gameObject.SetActive(true);
-        changedTime = 5;
+        changedTime = 15;
         player.safe = false;
 
     }

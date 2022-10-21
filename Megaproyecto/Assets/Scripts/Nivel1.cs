@@ -19,12 +19,12 @@ public class Nivel1 : MonoBehaviour
     //private float totalTime= 20;
     private bool ended = false;
 
-
     private void Start()
     {
-        audioManager.Play("Nivel1");
-
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        Time.timeScale = 1;
     }
+
     // Update is called once per frame
     void Update()
     {

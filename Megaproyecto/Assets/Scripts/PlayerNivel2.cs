@@ -9,10 +9,12 @@ public class PlayerNivel2 : MonoBehaviour
     public Nivel2 manager;
 
     public int playerType = 1;
+    public GameObject flores;
 
 
     bool changed = false;
     bool close = false;
+    bool closeJarron = false;
     private float changedTime = 0;
     private string otherType = "ant";
 
@@ -27,17 +29,25 @@ public class PlayerNivel2 : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && close)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            
-            changed = true;
-            if (playerType == 1)
+            if (close)
             {
-                manager.changeToAnt();
+                changed = true;
+                if (playerType == 1)
+                {
+                    manager.changeToAnt();
+                }
+                else
+                {
+                    manager.changeToPlayer();
+
+                }
             }
-            else
+            if (closeJarron && manager.itemsCollected == 4)
             {
-                manager.changeToPlayer();
+                flores.SetActive(true);
+                StartCoroutine(WinGame());
 
             }
 
@@ -57,16 +67,31 @@ public class PlayerNivel2 : MonoBehaviour
 
     }
 
+    IEnumerator WinGame()
+    {
+        yield return new WaitForSeconds(3);
+        manager.WonGame();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.name == "Jarron")
+        {
+            closeJarron = true;
+        }
         if (other.gameObject.tag == otherType)
         {
             close = true;
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.name == "Jarron")
+        {
+            closeJarron = false;
+        }
         if (other.gameObject.tag == otherType)
         {
             close = false;
