@@ -105,9 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69853e7942fc54d4aaf52d6857ee3c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
   speed: 7
-  jumpForce: 12
+  jumpForce: 13
   gravity: 25
   groundCheck: {fileID: 5612054687691086286}
   groundLayer:
@@ -115,6 +114,7 @@ MonoBehaviour:
     m_Bits: 64
   animator: {fileID: 2056055583133940652}
   audioManager: {fileID: 0}
+  isAnt: 0
 --- !u!143 &5612054687279282625
 CharacterController:
   m_ObjectHideFlags: 0

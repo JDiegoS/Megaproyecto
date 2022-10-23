@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Murcielago : MonoBehaviour
 {
     public int speed = 5;
     public Transform startPosition;
     public Transform endPosition;
+    public GameObject murcielago;
     public bool lookingLeft;
     public Nivel3 manager;
     public GameObject player;
+    public NavMeshAgent agent;
 
     public PlayerNivel3 playerManager;
     private bool changedPosition;
     private float changedTime = 5f;
-    private bool chasing = false;
-    private Vector3 target;
+    public bool chasing = false;
+    private bool firstChase = false;
+    private bool previousLookLeft = false;
+    private Vector3 previousTarget;
+    public Vector3 target;
+    private Vector3 rotateV = new Vector3(0f, 180f, 0f);
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,22 +38,35 @@ public class Murcielago : MonoBehaviour
 
         }
         newPosition();
+        agent.updateRotation = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerManager.safe)
+        if (playerManager.safe && chasing)
         {
-            
+            if (previousLookLeft && !lookingLeft)
+            {
+                murcielago.transform.Rotate(rotateV);
+                lookingLeft = true;
+            }
+            else if (!previousLookLeft && lookingLeft)
+            {
+                murcielago.transform.Rotate(rotateV);
+                lookingLeft = false;
+            }
             chasing = false;
+            target = previousTarget;
+            newPosition();
         }
-        else
+        else if (!playerManager.safe && !chasing)
         {
             float dist = Vector3.Distance(transform.position, player.transform.position);
-            if (dist < 20)
+            if (dist < 10)
             {
                 chasing = true;
+                firstChase = true;
             }
         }
         if (changedPosition)
@@ -72,13 +93,12 @@ public class Murcielago : MonoBehaviour
             if (lookingLeft)
             {
                 if (transform.position.x > startPosition.position.x)
-                    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                    agent.SetDestination(target);
                 else
                 {
                     lookingLeft = false;
                     target = new Vector3(endPosition.position.x, target.y, target.z);
-                    Vector3 lookAtPos = new Vector3(0f, 180f, 0f);
-                    transform.Rotate(lookAtPos);
+                    murcielago.transform.Rotate(rotateV);
                 }
             }
 
@@ -86,21 +106,33 @@ public class Murcielago : MonoBehaviour
             {
 
                 if (transform.position.x < endPosition.position.x)
-                    transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                    agent.SetDestination(target);
+
                 else
                 {
                     lookingLeft = true;
                     target = new Vector3(startPosition.position.x, target.y, target.z);
-                    Vector3 lookAtPos = new Vector3(0f, 180f, 0f);
-                    transform.Rotate(lookAtPos);
+                    murcielago.transform.Rotate(rotateV);
                 }
             }
         }
 
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.LookAt(player.transform);
+            if (firstChase)
+            {
+                previousLookLeft = lookingLeft;
+                previousTarget = target;
+                firstChase = false;
+
+            }
+            agent.SetDestination(player.transform.position);
+            murcielago.transform.LookAt(new Vector3(player.transform.position.x, murcielago.transform.position.y, murcielago.transform.position.z));
+            if (player.transform.position.x < transform.position.x)
+                lookingLeft = true;
+            else
+                lookingLeft = false;
+
 
         }
     }
@@ -108,15 +140,20 @@ public class Murcielago : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !playerManager.safe)
+        if (other.gameObject.tag == "Player")
         {
+            if (playerManager.safe)
+            {
+                chasing = false;
+                return;
+            }
             manager.LostGame();
         }
     }
 
     private void newPosition()
     {
-        target = new Vector3(target.x, Random.Range(0.0f, 10.0f), transform.position.z);
+        target = new Vector3(target.x, Random.Range(0.0f, 25.0f), transform.position.z);
         changedPosition = true;
         changedTime = 3;
     }

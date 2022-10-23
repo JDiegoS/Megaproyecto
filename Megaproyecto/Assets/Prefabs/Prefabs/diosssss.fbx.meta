@@ -1,0 +1,433 @@
+fileFormatVersion: 2
+guid: 1c62ac8e2afaa0b45b061c4ece67fb2a
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 3776395182574681654
+    second: Armature.001|Armature.001|Armature.001|Ant_walk
+  - first:
+      74: -3144031498550097704
+    second: Armature.001|Camera001|Take 001|BaseLayer
+  - first:
+      74: 3384267598494001121
+    second: Armature.001|dios.012Action
+  - first:
+      74: 8224073338445296734
+    second: Armature.001|dios.013Action
+  - first:
+      74: -8874067160250137924
+    second: Armature.001|FillLight|Take 001|BaseLayer
+  - first:
+      74: -1744696832960445143
+    second: Armature.001|FoodCard|Take 001|BaseLayer
+  - first:
+      74: 7910662418489822420
+    second: Armature.001|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 158799975212490370
+    second: Armature.001|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 1543630361349176680
+    second: Armature.001|leftWing|Take 001|BaseLayer
+  - first:
+      74: 7982911195331201574
+    second: Armature.001|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: -2065294619203227157
+    second: Armature.001|rightWing|Take 001|BaseLayer
+  - first:
+      74: -922131441835879334
+    second: Armature.001|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -7453722835149508711
+    second: Armature.001|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -979508452094195025
+    second: Armature.001|Vase_02|Take 001|BaseLayer
+  - first:
+      74: -8971990972439293764
+    second: Armature.001|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 1928827126520988397
+    second: Armature.001|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -6248865554876972881
+    second: Armature.001|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: 8967130694440342771
+    second: Armature.001|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: -6466284372396101127
+    second: Vase_01|Camera001|Take 001|BaseLayer
+  - first:
+      74: 2926165843429725278
+    second: Vase_01|dios.012Action
+  - first:
+      74: -6590233837331969128
+    second: Vase_01|dios.013Action
+  - first:
+      74: 1193556583474856351
+    second: Vase_01|FillLight|Take 001|BaseLayer
+  - first:
+      74: -1615567665656249334
+    second: Vase_01|FoodCard|Take 001|BaseLayer
+  - first:
+      74: -8678794911732130356
+    second: Vase_01|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 7741752735088650177
+    second: Vase_01|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 3317980788650111684
+    second: Vase_01|leftWing|Take 001|BaseLayer
+  - first:
+      74: 5780963018275065190
+    second: Vase_01|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 6049465327113163255
+    second: Vase_01|rightWing|Take 001|BaseLayer
+  - first:
+      74: 7180389483579084864
+    second: Vase_01|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -5785250483607032765
+    second: Vase_01|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -2368453114511139397
+    second: Vase_01|Vase_02|Take 001|BaseLayer
+  - first:
+      74: -6828329192872080323
+    second: Vase_01|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 3993267016864072531
+    second: Vase_01|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: 6143557128509894874
+    second: Vase_01|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: 8156340489191522373
+    second: Vase_01|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: -5132351999145647099
+    second: Vase_02|Camera001|Take 001|BaseLayer
+  - first:
+      74: -6123365838436344512
+    second: Vase_02|dios.012Action
+  - first:
+      74: -9195166825222604447
+    second: Vase_02|dios.013Action
+  - first:
+      74: 4923508744908032285
+    second: Vase_02|FillLight|Take 001|BaseLayer
+  - first:
+      74: -1727266024135961637
+    second: Vase_02|FoodCard|Take 001|BaseLayer
+  - first:
+      74: 1502143121371185531
+    second: Vase_02|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 9185945352434437751
+    second: Vase_02|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 8622238869551006833
+    second: Vase_02|leftWing|Take 001|BaseLayer
+  - first:
+      74: -3168943260571483776
+    second: Vase_02|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 317998081202920175
+    second: Vase_02|rightWing|Take 001|BaseLayer
+  - first:
+      74: 4026395734728326254
+    second: Vase_02|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: 3134738637968240176
+    second: Vase_02|Vase_01|Take 001|BaseLayer
+  - first:
+      74: 581070555963244267
+    second: Vase_02|Vase_02|Take 001|BaseLayer
+  - first:
+      74: 4964440397655459122
+    second: Vase_02|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 847378772715739512
+    second: Vase_02|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -426357121023558899
+    second: Vase_02|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -7953915170532521449
+    second: Vase_02|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: 3213918682254695308
+    second: Vase_03|Camera001|Take 001|BaseLayer
+  - first:
+      74: -2581290238996577190
+    second: Vase_03|dios.012Action
+  - first:
+      74: -5816609981581186987
+    second: Vase_03|dios.013Action
+  - first:
+      74: -104229605278032971
+    second: Vase_03|FillLight|Take 001|BaseLayer
+  - first:
+      74: -9177771144258770357
+    second: Vase_03|FoodCard|Take 001|BaseLayer
+  - first:
+      74: 1205707706742284654
+    second: Vase_03|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 6004731028288449002
+    second: Vase_03|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 2466853077134037965
+    second: Vase_03|leftWing|Take 001|BaseLayer
+  - first:
+      74: -8641190425883695337
+    second: Vase_03|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 1396568235727062786
+    second: Vase_03|rightWing|Take 001|BaseLayer
+  - first:
+      74: 6074651332424934173
+    second: Vase_03|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -6206772941500061058
+    second: Vase_03|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -5227166854927144893
+    second: Vase_03|Vase_02|Take 001|BaseLayer
+  - first:
+      74: -8072473952165875202
+    second: Vase_03|Vase_03|Take 001|BaseLayer
+  - first:
+      74: -2237131600581570915
+    second: Vase_03|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -4522946798419437945
+    second: Vase_03|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -7197083662461617910
+    second: Vase_03|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: 5862543501114407046
+    second: Armature|Armature|Take 001|BaseLayer
+  - first:
+      74: -7457942984698970134
+    second: Armature|Camera001|Take 001|BaseLayer
+  - first:
+      74: -3273354140846201405
+    second: Armature|dios.012Action
+  - first:
+      74: 4393465005162969912
+    second: Armature|dios.013Action
+  - first:
+      74: 7137276136875637163
+    second: Armature|FillLight|Take 001|BaseLayer
+  - first:
+      74: 6395060790010344476
+    second: Armature|FoodCard|Take 001|BaseLayer
+  - first:
+      74: -5172955899191593240
+    second: Armature|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 3323454974436032110
+    second: Armature|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 132208840998767741
+    second: Armature|leftWing|Take 001|BaseLayer
+  - first:
+      74: -8296414292729237654
+    second: Armature|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: 2849696177467364470
+    second: Armature|rightWing|Take 001|BaseLayer
+  - first:
+      74: -8636975322515255675
+    second: Armature|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -1668001122230885039
+    second: Armature|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -9074542325782782462
+    second: Armature|Vase_02|Take 001|BaseLayer
+  - first:
+      74: 5614303832240489574
+    second: Armature|Vase_03|Take 001|BaseLayer
+  - first:
+      74: 3724900256704813274
+    second: Armature|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: 1298312527645753380
+    second: Armature|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -5024775910421780224
+    second: Armature|VRayCam004|Take 001|BaseLayer
+  - first:
+      74: 2825323088684332368
+    second: metarig|Camera001|Take 001|BaseLayer
+  - first:
+      74: 7348302938828172023
+    second: metarig|caminarDios
+  - first:
+      74: 65950389404141286
+    second: metarig|dios.012Action
+  - first:
+      74: -732482792918799249
+    second: metarig|dios.013Action
+  - first:
+      74: -2787585827172395803
+    second: metarig|DIOSexistir
+  - first:
+      74: -2172952343406241234
+    second: metarig|FillLight|Take 001|BaseLayer
+  - first:
+      74: 348305858660458269
+    second: metarig|FoodCard|Take 001|BaseLayer
+  - first:
+      74: -7369478886731643181
+    second: metarig|HeroObjectGroup|Take 001|BaseLayer
+  - first:
+      74: 4429918767709858862
+    second: metarig|jugarDios
+  - first:
+      74: -7652767894256140766
+    second: metarig|JUGARRR
+  - first:
+      74: -1074116257404144946
+    second: metarig|KeyLight|Take 001|BaseLayer
+  - first:
+      74: 9079985989653347976
+    second: metarig|leftWing|Take 001|BaseLayer
+  - first:
+      74: -6574000677838172575
+    second: metarig|RigControlGroup|Take 001|BaseLayer
+  - first:
+      74: -8391588180160552897
+    second: metarig|rightWing|Take 001|BaseLayer
+  - first:
+      74: -7671992879579330374
+    second: metarig|saltarDios
+  - first:
+      74: -4490118162672833797
+    second: metarig|ShadowPlane|Take 001|BaseLayer
+  - first:
+      74: -4959803383959002865
+    second: metarig|Vase_01|Take 001|BaseLayer
+  - first:
+      74: -2838431197044737617
+    second: metarig|Vase_02|Take 001|BaseLayer
+  - first:
+      74: 5906608178273331990
+    second: metarig|Vase_03|Take 001|BaseLayer
+  - first:
+      74: -6016018000220903146
+    second: metarig|Vase_Set_3|Take 001|BaseLayer
+  - first:
+      74: -8978334606042530622
+    second: metarig|VRayCam003|Take 001|BaseLayer
+  - first:
+      74: -2666799097323705088
+    second: metarig|VRayCam004|Take 001|BaseLayer
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

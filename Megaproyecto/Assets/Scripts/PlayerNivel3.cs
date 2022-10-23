@@ -8,10 +8,38 @@ public class PlayerNivel3 : MonoBehaviour
 
     public Nivel3 manager;
     public CharacterController controller;
-
-
     public bool safe;
 
+    public bool usedDodge;
+    private float dodgedTime = 0;
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && !usedDodge)
+        {
+            safe = true;
+            usedDodge = true;
+            StartCoroutine(DodgeEffect());
+
+        }
+        if (usedDodge)
+        {
+            dodgedTime += Time.deltaTime;
+        }
+
+        if (dodgedTime > 5f)
+        {
+            usedDodge = false;
+            dodgedTime = 0;
+        }
+
+    }
+
+    IEnumerator DodgeEffect()
+    {
+        yield return new WaitForSeconds(2);
+        safe = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +53,6 @@ public class PlayerNivel3 : MonoBehaviour
     {
         if (other.gameObject.tag == "safezone")
         {
-            Debug.Log("salio");
             safe = false;
         }
     }
