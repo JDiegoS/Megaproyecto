@@ -98,6 +98,12 @@ public class PlayerNivel2 : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "knife")
+            manager.TimeEnd();
+    }
+
 
 
 
