@@ -10,6 +10,7 @@ public class PlayerNivel2 : MonoBehaviour
 
     public int playerType = 1;
     public GameObject flores;
+    public Collider antTrigger;
 
 
     bool changed = false;
@@ -79,6 +80,14 @@ public class PlayerNivel2 : MonoBehaviour
         {
             closeJarron = true;
         }
+        if (other.gameObject.name == "activate")
+        {
+            antTrigger.enabled = true;
+        }
+        if (other.gameObject.name == "deactivate")
+        {
+            antTrigger.enabled = false;
+        }
         if (other.gameObject.tag == otherType)
         {
             close = true;
@@ -102,6 +111,11 @@ public class PlayerNivel2 : MonoBehaviour
     {
         if (hit.gameObject.tag == "knife")
             manager.TimeEnd();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 
 

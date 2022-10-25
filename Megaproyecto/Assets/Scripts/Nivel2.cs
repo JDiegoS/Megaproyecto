@@ -1,25 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class Nivel2 : MonoBehaviour
 {
-
+    public TMP_Text timeText;
+    public TMP_Text counterText;
     public CameraController camera;
     public GameObject ant;
+    public AudioManager audioManager;
     public GameManager manager;
     public GameObject player1;
+    public int totalItems = 4;
+
     private CharacterController player1cc;
     private CharacterController ant1cc;
     private PlayerController player1script;
-    public AudioManager audioManager;
     private PlayerController antscript;
     private PlayerNivel2 player1lvl;
     private PlayerNivel2 antlvl;
 
 
-    public Text timeText;
 
     public int itemsCollected = 0;
     public float timeRemaining = 100;
@@ -47,7 +50,10 @@ public class Nivel2 : MonoBehaviour
         if (!ended)
         {
             timeRemaining -= Time.deltaTime;
-            timeText.text = Mathf.FloorToInt(timeRemaining % 60).ToString();
+
+            int minutes = Mathf.FloorToInt(timeRemaining / 60F);
+            int seconds = Mathf.FloorToInt(timeRemaining - minutes * 60);
+            timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
         }
         if (timeRemaining <= 0)
         {
@@ -87,6 +93,8 @@ public class Nivel2 : MonoBehaviour
     {
         audioManager.Play("Collect");
         itemsCollected += 1;
+        counterText.text = itemsCollected + "/" + totalItems;
+
     }
 
     public void TimeEnd()
