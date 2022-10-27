@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+
 
 public class JuegoPelota : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class JuegoPelota : MonoBehaviour
     private Rigidbody rbPelota;
     public AudioManager audioManager;
 
+    public GameManager manager;
     public Transform player1Spawn;
     public Transform enemySpawn;
 
-    public Text scoreText;
+    public TMP_Text scoreText;
+
     private int score1 = 0;
     private int score2 = 0;
+    private bool ended = false;
 
 
     private void Start()
@@ -27,40 +31,57 @@ public class JuegoPelota : MonoBehaviour
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         rbPelota = pelota.GetComponent<Rigidbody>();
-        StartCoroutine(PlayMusic());
     }
 
-    IEnumerator PlayMusic()
-    {
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(2);
-
-        audioManager.Play("Pelota1");
-    }
     public void updateScore()
     {
         if(score1 == 3)
         {
-            scoreText.text = "GANO EQUIPO 1";
-            Time.timeScale = 0f;
-            return;
+            ended = true;
+            StartCoroutine(WonGame());
         }
-        else if(score2 == 3){
-            scoreText.text = "GANO EQUIPO 2";
-            Time.timeScale = 0f;
-            return;
+        else if (score2 == 3)
+        {
+            ended = true;
+            StartCoroutine(LostGame());
         }
-        scoreText.text = score1 + "-" + score2;
+        scoreText.text = score1 + " - " + score2;
 
 
+    }
+
+    public IEnumerator LostGame()
+    {
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
+        audioManager.Play("Hit");
+        manager.Defeat();
+
+    }
+
+    IEnumerator WonGame()
+    {
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
+        manager.NextLevel();
     }
     public void scoreTeam1()
     {
         audioManager.Play("Collect");
         score1 += 1;
         updateScore();
-        resetPositions();
+        if (!ended)
+            resetPositions();
 
     }
     public void scoreTeam2()
@@ -68,7 +89,8 @@ public class JuegoPelota : MonoBehaviour
         audioManager.Play("Collect");
         score2 += 1;
         updateScore();
-        resetPositions();
+        if (!ended)
+            resetPositions();
     }
     public void resetPositions()
     {

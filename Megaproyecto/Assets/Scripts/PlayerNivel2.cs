@@ -71,7 +71,7 @@ public class PlayerNivel2 : MonoBehaviour
     IEnumerator WinGame()
     {
         yield return new WaitForSeconds(3);
-        manager.WonGame();
+        StartCoroutine(manager.WonGame());
     }
 
     private void OnTriggerEnter(Collider other)

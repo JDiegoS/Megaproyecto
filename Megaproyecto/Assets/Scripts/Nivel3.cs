@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class Nivel3 : MonoBehaviour
 {
 
+    public GameObject timer;
     public PlayerNivel3 player;
     public GameManager manager;
     public AudioManager audioManager;
     public List<GameObject> zones;
+    public float speed = 2;
 
 
-    public Text timeText;
+    //public Text timeText;
 
     private float timeRemaining = 90;
     private bool ended = false;
 
     private float changedTime = 15f;
+    float degrees = 0;
     private int currentZone;
     private bool first = true;
 
@@ -36,11 +39,11 @@ public class Nivel3 : MonoBehaviour
         if (!ended)
         {
             timeRemaining -= Time.deltaTime;
-            timeText.text = Mathf.FloorToInt(timeRemaining % 60).ToString();
+            timer.transform.Rotate(0, 0,(speed * Time.deltaTime));
         }
         if (timeRemaining <= 0)
         {
-            WonGame();
+            StartCoroutine(WonGame());
 
         }
 
@@ -56,20 +59,20 @@ public class Nivel3 : MonoBehaviour
 
     }
 
-    public void LostGame()
+    public IEnumerator LostGame()
     {
+        yield return new WaitForSeconds(2);
         audioManager.Play("Hit");
         manager.Defeat();
         ended = true;
 
     }
 
-    public void WonGame()
+    IEnumerator WonGame()
     {
         ended = true;
-        manager.Victory();
-
-
+        yield return new WaitForSeconds(2);
+        manager.JuegoPelota();
     }
 
     public IEnumerator newZone()

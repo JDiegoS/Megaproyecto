@@ -8,6 +8,7 @@ public class PlayerPelota : MonoBehaviour
 
     public CharacterController controller;
 
+    public Animator animator;
     public float hitForce = 4;
 
 
@@ -44,6 +45,11 @@ public class PlayerPelota : MonoBehaviour
 
     }
     
+    IEnumerator StopHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("hit", false);
+    }
     
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -51,7 +57,9 @@ public class PlayerPelota : MonoBehaviour
 
         if (hit.gameObject.tag == "ball")
         {
-            Debug.Log("hit");
+            animator.SetBool("hit", true);
+            StartCoroutine(StopHit());
+
             float forceA = 2;
             
             Rigidbody rb = hit.collider.attachedRigidbody;

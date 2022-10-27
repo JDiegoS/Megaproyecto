@@ -10,6 +10,7 @@ public class PlayerNivel3 : MonoBehaviour
 
     public Nivel3 manager;
     public CharacterController controller;
+    public Animator animator;
     public bool safe;
     private NavMeshObstacle navObstacle;
 
@@ -24,6 +25,7 @@ public class PlayerNivel3 : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && !usedDodge)
         {
+            animator.SetBool("crouch", true);
             safe = true;
             navObstacle.enabled = true;
             usedDodge = true;
@@ -43,10 +45,13 @@ public class PlayerNivel3 : MonoBehaviour
 
     }
 
+
+
     IEnumerator DodgeEffect()
     {
         yield return new WaitForSeconds(2);
         navObstacle.enabled = false;
+            animator.SetBool("crouch", false);
         safe = false;
     }
 

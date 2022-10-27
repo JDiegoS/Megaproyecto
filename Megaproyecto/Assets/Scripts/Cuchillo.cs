@@ -10,6 +10,6 @@ public class Cuchillo : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ant")
-            manager.TimeEnd();
+            StartCoroutine(manager.TimeEnd());
     }
 }

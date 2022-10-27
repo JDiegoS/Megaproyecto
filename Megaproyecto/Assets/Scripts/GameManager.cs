@@ -8,13 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject MainUI;
-    public GameObject Victoria;
     public GameObject Derrota;
     public Slider audioSlider;
     public AudioManager audioManager;
     public bool mainMenu = false;
 
-    private string currentScene;
+    private int currentScene;
     private bool paused;
 
     private void Start()
@@ -39,12 +38,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Victory()
-    {
-        MainUI.SetActive(false);
-        Victoria.SetActive(true);
-        Time.timeScale = 0;
-    }
 
     public void Defeat()
     {
@@ -79,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
-        currentScene = "MainMenu";
         audioManager.Play("Credits");
     }
 
@@ -88,21 +80,21 @@ public class GameManager : MonoBehaviour
         Debug.Log("cal Nivel1");
         
         audioManager.Play("Nivel1");
-        currentScene = "Nivel1";
+        currentScene = 1;
         Time.timeScale = 1;
         SceneManager.LoadScene("Nivel1");
     }
     public void Nivel2()
     {
         Time.timeScale = 1;
-        currentScene = "Nivel2";
+        currentScene = 2;
         audioManager.Play("Nivel2");
         SceneManager.LoadScene("Nivel2");
     }
     public void Nivel3()
     {
         Time.timeScale = 1;
-        currentScene = "Nivel3";
+        currentScene = 3;
         audioManager.Play("Nivel3");
         SceneManager.LoadScene("Nivel3");
     }
@@ -112,7 +104,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         audioManager.Play("Pelota1");
         SceneManager.LoadScene("JuegoPelota");
-        currentScene = "JuegoPelota";
+    }
+
+    public void NextLevel()
+    {
+        if (currentScene == 1)
+            Nivel2();
+        else if (currentScene == 2)
+            Nivel3();
     }
 
     public void ReloadScene()

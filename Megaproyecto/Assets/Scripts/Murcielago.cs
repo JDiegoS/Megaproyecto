@@ -147,7 +147,7 @@ public class Murcielago : MonoBehaviour
                 chasing = false;
                 return;
             }
-            manager.LostGame();
+            StartCoroutine(manager.LostGame());
         }
     }
 

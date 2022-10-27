@@ -7,7 +7,8 @@ using TMPro;
 public class Nivel1 : MonoBehaviour
 {
 
-    public TMP_Text timeText;
+    public GameObject timer;
+    //public TMP_Text timeText;
     public TMP_Text counterText;
 
     public int totalItems = 5;
@@ -32,12 +33,12 @@ public class Nivel1 : MonoBehaviour
         {
             //totalTime -= Time.deltaTime;
             timeRemaining -= Time.deltaTime;
-            timeText.text = Mathf.FloorToInt(timeRemaining % 60).ToString();
+            timer.transform.Rotate(0, 0, (1.5f * Time.deltaTime));
         }
         if (timeRemaining <= 0)
         {
             ended = true;
-            TimeEnd();
+            StartCoroutine(TimeEnd());
 
         }
         /*
@@ -59,19 +60,21 @@ public class Nivel1 : MonoBehaviour
         counterText.text = itemsCollected + "/" + totalItems;
         if (itemsCollected == 5)
         {
-            WonGame();
+            StartCoroutine(WonGame());
         }
     }
 
-    public void TimeEnd()
+    IEnumerator TimeEnd()
     {
-
+        yield return new WaitForSeconds(2);
         manager.Defeat();
+
     }
 
-    public void WonGame()
+    IEnumerator WonGame()
     {
-        manager.Victory();
-
+        ended = true;
+        yield return new WaitForSeconds(2);
+        manager.JuegoPelota();
     }
 }

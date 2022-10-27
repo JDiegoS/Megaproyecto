@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Nivel2 : MonoBehaviour
 {
-    public TMP_Text timeText;
+    //public TMP_Text timeText;
+    public GameObject timer;
     public TMP_Text counterText;
     public CameraController camera;
     public GameObject ant;
@@ -26,6 +27,7 @@ public class Nivel2 : MonoBehaviour
 
     public int itemsCollected = 0;
     public float timeRemaining = 100;
+    float degrees = 0;
     private bool ended = false;
 
 
@@ -51,14 +53,19 @@ public class Nivel2 : MonoBehaviour
         {
             timeRemaining -= Time.deltaTime;
 
+            timer.transform.Rotate(0, 0, (1.33f * Time.deltaTime));
+
+            //transform.Rotate(Vector3.up * (RotationSpeed * Time.deltaTime))
+            /*
             int minutes = Mathf.FloorToInt(timeRemaining / 60F);
             int seconds = Mathf.FloorToInt(timeRemaining - minutes * 60);
             timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+            */
         }
         if (timeRemaining <= 0)
         {
             ended = true;
-            TimeEnd();
+            StartCoroutine(TimeEnd());
 
         }
 
@@ -97,16 +104,18 @@ public class Nivel2 : MonoBehaviour
 
     }
 
-    public void TimeEnd()
+    public IEnumerator TimeEnd()
     {
+        yield return new WaitForSeconds(2);
         manager.Defeat();
 
     }
 
-    public void WonGame()
+    public IEnumerator WonGame()
     {
         ended = true;
-        manager.Victory();
+        yield return new WaitForSeconds(2);
+        manager.JuegoPelota();
 
 
     }

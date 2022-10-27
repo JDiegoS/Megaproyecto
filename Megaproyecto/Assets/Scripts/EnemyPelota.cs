@@ -7,6 +7,7 @@ public class EnemyPelota : MonoBehaviour
     public int speed = 5;
     public int jumpForce = 5;
     public int hitForce = 5;
+    public Animator animator;
     public Transform minPosition;
     public Transform maxPosition;
     public Transform stuckPosition;
@@ -37,6 +38,7 @@ public class EnemyPelota : MonoBehaviour
         {
             if (grounded)
             {
+                animator.SetBool("move", true);
                 if (lookingLeft)
                 {
                     if (transform.position.x > minPosition.position.x)
@@ -67,7 +69,7 @@ public class EnemyPelota : MonoBehaviour
 
             if (ball.transform.position.y > 1.5f && ball.transform.position.y < 4 && lookingLeft && Mathf.Abs(ball.transform.position.x - transform.position.x) <= 4 && ballRb.velocity.x > 0 && grounded)
             {
-                Debug.Log("jump");
+                animator.SetBool("jump", true);
                 grounded = false;
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
@@ -79,6 +81,11 @@ public class EnemyPelota : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, stuckPosition.position, speed * Time.deltaTime);
             chasing = true;
+
+            if (transform.position == stuckPosition.position)
+            {
+                animator.SetBool("move", false);
+            }
 
             /*
             if (Mathf.Abs(ball.transform.position.x - transform.position.x) <= 4 && ballRb.velocity.x < 0 && grounded)
@@ -114,26 +121,33 @@ public class EnemyPelota : MonoBehaviour
         {
             ballRb.AddForce(gameObject.transform.right * hitForce * multipier, ForceMode.Impulse);
             ballRb.AddForce(gameObject.transform.up * hitForce, ForceMode.Impulse);
-
+            animator.SetBool("hit", true);
+            StartCoroutine(StopHit());
         }
         if (collision.gameObject.tag == "ground" && !grounded)
         {
             grounded = true;
+            animator.SetBool("jump", false);
         }
+    }
+
+    IEnumerator StopHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("hit", false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ball" && chasing && grounded)
         {
-            Debug.Log(transform.right);
 
             grounded = false;
+            animator.SetBool("jump", true);
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
             rb.AddForce(right, ForceMode.Impulse);
             if (Mathf.Abs(ball.transform.position.x - transform.position.x) <= 0.2f && ball.transform.position.y < 0)
             {
-                Debug.Log("entroo");
                 rb.AddForce(right, ForceMode.Impulse);
             }
         }
