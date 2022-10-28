@@ -8,23 +8,34 @@ public class CuchilloTrigger : MonoBehaviour
     private Vector3 yPos;
     public float speed = 1.0f;
     public float waitTime = 4.0f;
+    public AudioManager audioManager;
 
     private bool crush = false;
     private bool ready = true;
+    private bool played = false;
+
 
     private void Start()
     {
         yPos = transform.position;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     void Update()
     {
         if (crush && ready)
         {
+            if (!played)
+            {
+                audioManager.Play("Knife");
+                played = true;
+            }
             transform.position = Vector3.MoveTowards(transform.position, yMax, speed * Time.deltaTime);
             if (transform.position == yMax)
             {
+
                 crush = false;
                 ready = false;
+                played = false;
                 StartCoroutine(CrushWait());
             }
         }

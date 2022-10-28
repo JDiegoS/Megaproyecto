@@ -13,6 +13,7 @@ public class JuegoPelota : MonoBehaviour
     public GameObject pelota;
     private Rigidbody rbPelota;
     public AudioManager audioManager;
+    public Animator fade;
 
     public GameManager manager;
     public Transform player1Spawn;
@@ -31,11 +32,23 @@ public class JuegoPelota : MonoBehaviour
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
         rbPelota = pelota.GetComponent<Rigidbody>();
+
+        if (audioManager.currentScene == 1)
+        {
+            StartCoroutine(PlayTutorial());
+        }
+    }
+
+    IEnumerator PlayTutorial()
+    {
+        yield return new WaitForSeconds(1);
+        manager.Tutorial();
     }
 
     public void updateScore()
     {
-        if(score1 == 3)
+        audioManager.Play("Gol");
+        if (score1 == 3)
         {
             ended = true;
             StartCoroutine(WonGame());
@@ -66,13 +79,16 @@ public class JuegoPelota : MonoBehaviour
 
     IEnumerator WonGame()
     {
+        audioManager.wonPelota = true;
         Time.timeScale = 0f;
-        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        float pauseEndTime = Time.realtimeSinceStartup + 4f;
         while (Time.realtimeSinceStartup < pauseEndTime)
         {
             yield return 0;
         }
         Time.timeScale = 1f;
+        audioManager.Stop("Pelota1");
+
         manager.NextLevel();
     }
     public void scoreTeam1()

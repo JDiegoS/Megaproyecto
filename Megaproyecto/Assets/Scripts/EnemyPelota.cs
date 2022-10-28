@@ -12,6 +12,7 @@ public class EnemyPelota : MonoBehaviour
     public Transform maxPosition;
     public Transform stuckPosition;
     public Vector3 right = new Vector3(20f, 0f, 0f);
+    public AudioManager audioManager;
     public GameObject ball;
 
     private bool lookingLeft = true;
@@ -24,6 +25,7 @@ public class EnemyPelota : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         rb = gameObject.GetComponent<Rigidbody>();
         ballRb = ball.gameObject.GetComponent<Rigidbody>();
     }
@@ -119,6 +121,7 @@ public class EnemyPelota : MonoBehaviour
     {
         if (collision.gameObject.tag == "ball")
         {
+            audioManager.Play("Pegar");
             ballRb.AddForce(gameObject.transform.right * hitForce * multipier, ForceMode.Impulse);
             ballRb.AddForce(gameObject.transform.up * hitForce, ForceMode.Impulse);
             animator.SetBool("hit", true);

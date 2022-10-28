@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Nivel1 : MonoBehaviour
@@ -13,6 +14,7 @@ public class Nivel1 : MonoBehaviour
 
     public int totalItems = 5;
     public AudioManager audioManager;
+    public Animator fade;
     public GameManager manager;
 
     private int itemsCollected = 0;
@@ -24,6 +26,19 @@ public class Nivel1 : MonoBehaviour
     {
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         Time.timeScale = 1;
+        audioManager.wonPelota = false;
+
+        if (audioManager.currentScene != 1)
+        {
+            if (audioManager.currentVideo != 1)
+            {
+                audioManager.Stop("Nivel1");
+                audioManager.currentVideo = 1;
+                SceneManager.LoadScene("Videos");
+            }
+            else
+                StartCoroutine(PlayTutorial());
+        }
     }
 
     // Update is called once per frame
@@ -33,7 +48,7 @@ public class Nivel1 : MonoBehaviour
         {
             //totalTime -= Time.deltaTime;
             timeRemaining -= Time.deltaTime;
-            timer.transform.Rotate(0, 0, (1.5f * Time.deltaTime));
+            timer.transform.Rotate(0, 0, (9f * Time.deltaTime));
         }
         if (timeRemaining <= 0)
         {
@@ -51,11 +66,19 @@ public class Nivel1 : MonoBehaviour
 
     }
 
+    IEnumerator PlayTutorial()
+    {
+        yield return new WaitForSeconds(1);
+        audioManager.currentScene = 1;
+        manager.Tutorial();
+    }
+
     public void AddTime()
     {
-        audioManager.Play("Collect");
+        audioManager.Play("Pluma");
 
         timeRemaining += 10;
+        timer.transform.Rotate(0, 0, -90f);
         itemsCollected += 1;
         counterText.text = itemsCollected + "/" + totalItems;
         if (itemsCollected == 5)
@@ -66,7 +89,14 @@ public class Nivel1 : MonoBehaviour
 
     IEnumerator TimeEnd()
     {
-        yield return new WaitForSeconds(2);
+        ended = true;
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
         manager.Defeat();
 
     }
@@ -74,7 +104,19 @@ public class Nivel1 : MonoBehaviour
     IEnumerator WonGame()
     {
         ended = true;
-        yield return new WaitForSeconds(2);
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        fade.SetTrigger("Start");
+        pauseEndTime = Time.realtimeSinceStartup + 1f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
         manager.JuegoPelota();
     }
 }

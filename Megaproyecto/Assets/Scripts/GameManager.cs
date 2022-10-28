@@ -7,18 +7,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject PauseMenu;
+    public GameObject TutorialMenu;
     public GameObject MainUI;
     public GameObject Derrota;
     public Slider audioSlider;
+    public Animator fade;
     public AudioManager audioManager;
     public bool mainMenu = false;
-
-    private int currentScene;
     private bool paused;
 
     private void Start()
     {
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioSlider.value = audioManager.volume;
+        if (mainMenu)
+            Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -28,10 +31,12 @@ public class GameManager : MonoBehaviour
         {
             if (!paused)
             {
+                audioManager.Play("Click");
                 Pause();
             }
             else
             {
+                audioManager.Play("Click");
                 Resume();
 
             }
@@ -54,9 +59,18 @@ public class GameManager : MonoBehaviour
         paused = true;
     }
 
+    public void Tutorial()
+    {
+        audioManager.Play("Click");
+        TutorialMenu.SetActive(true);
+        MainUI.SetActive(false);
+        Time.timeScale = 0;
+        paused = true;
+    }
+
     public void ChangeVolume()
     {
-        AudioListener.volume = audioSlider.value;
+        audioManager.ChangeVolume(audioSlider.value);
     }
 
     public void Resume()
@@ -65,6 +79,7 @@ public class GameManager : MonoBehaviour
         paused = false;
         Time.timeScale = 1;
         MainUI.SetActive(true);
+        TutorialMenu.SetActive(false);
         PauseMenu.SetActive(false);
     }
 
@@ -75,49 +90,78 @@ public class GameManager : MonoBehaviour
         audioManager.Play("Credits");
     }
 
+    public void StartGCoroutine()
+    {
+        StartCoroutine(StartGame());
+    }
+
+    public IEnumerator StartGame()
+    {
+        fade.SetTrigger("Start");
+        audioManager.Stop("Credits");
+        yield return new WaitForSeconds(1);
+        Nivel1();
+    }
+
     public void Nivel1()
     {
-        Debug.Log("cal Nivel1");
         
-        audioManager.Play("Nivel1");
-        currentScene = 1;
         Time.timeScale = 1;
         SceneManager.LoadScene("Nivel1");
+        if (audioManager.currentVideo == 1)
+        audioManager.Play("Nivel1");
     }
     public void Nivel2()
     {
         Time.timeScale = 1;
-        currentScene = 2;
-        audioManager.Play("Nivel2");
         SceneManager.LoadScene("Nivel2");
+        if (audioManager.currentVideo == 2)
+            audioManager.Play("Nivel2");
+
     }
     public void Nivel3()
     {
         Time.timeScale = 1;
-        currentScene = 3;
-        audioManager.Play("Nivel3");
         SceneManager.LoadScene("Nivel3");
+        if (audioManager.currentVideo == 3)
+        audioManager.Play("Nivel3");
+
     }
 
     public void JuegoPelota()
     {
         Time.timeScale = 1;
-        audioManager.Play("Pelota1");
         SceneManager.LoadScene("JuegoPelota");
+        audioManager.Play("Pelota1");
     }
 
     public void NextLevel()
     {
-        if (currentScene == 1)
+        int curr = audioManager.currentScene;
+        if (audioManager.wonPelota)
+            curr++;
+        if (curr == 0)
+        {
+            StartGCoroutine();
+            audioManager.Stop("Credits");
+        }
+        else if (curr == 1)
+            Nivel1();
+        else if (curr == 2)
             Nivel2();
-        else if (currentScene == 2)
+        else if (curr == 3)
             Nivel3();
+        else
+        {
+            SceneManager.LoadScene("Videos");
+            audioManager.Stop("Home");
+        }
     }
 
     public void ReloadScene()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene("Nivel" + audioManager.currentScene);
     }
 
     public void Quit()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Nivel3 : MonoBehaviour
@@ -12,6 +13,7 @@ public class Nivel3 : MonoBehaviour
     public AudioManager audioManager;
     public List<GameObject> zones;
     public float speed = 2;
+    public Animator fade;
 
 
     //public Text timeText;
@@ -29,8 +31,21 @@ public class Nivel3 : MonoBehaviour
         Time.timeScale = 1;
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
+        audioManager.wonPelota = false;
         currentZone = 0;
         StartCoroutine(newZone());
+
+        if (audioManager.currentScene != 3)
+        {
+            if (audioManager.currentVideo != 3)
+            {
+                audioManager.Stop("Nivel3");
+                audioManager.currentVideo = 3;
+                SceneManager.LoadScene("Videos");
+            }
+            else
+                StartCoroutine(PlayTutorial());
+        }
 
     }
 
@@ -59,19 +74,38 @@ public class Nivel3 : MonoBehaviour
 
     }
 
+    IEnumerator PlayTutorial()
+    {
+        yield return new WaitForSeconds(1);
+        audioManager.currentScene = 3;
+        manager.Tutorial();
+    }
+
     public IEnumerator LostGame()
     {
-        yield return new WaitForSeconds(2);
-        audioManager.Play("Hit");
-        manager.Defeat();
         ended = true;
+        audioManager.Play("Hit");
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
+        manager.Defeat();
 
     }
 
     IEnumerator WonGame()
     {
         ended = true;
-        yield return new WaitForSeconds(2);
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
         manager.JuegoPelota();
     }
 
@@ -92,6 +126,8 @@ public class Nivel3 : MonoBehaviour
         Light light = zones[currentZone].gameObject.GetComponent<Light>();
         changedTime = 15;
         player.safe = false;
+        player.inZone = false;
+        player.navObstacle.enabled = false;
 
         yield return new WaitForSeconds(11.5f);
 

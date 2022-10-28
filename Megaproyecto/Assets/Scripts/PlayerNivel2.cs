@@ -10,8 +10,10 @@ public class PlayerNivel2 : MonoBehaviour
 
     public int playerType = 1;
     public GameObject flores;
+    public GameObject interaction;
     public Collider antTrigger;
 
+    public AudioManager audioManager;
 
     bool changed = false;
     bool close = false;
@@ -21,6 +23,7 @@ public class PlayerNivel2 : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (playerType == 2)
         {
             otherType = "Player";
@@ -37,6 +40,7 @@ public class PlayerNivel2 : MonoBehaviour
                 changed = true;
                 if (playerType == 1)
                 {
+                    interaction.SetActive(false);
                     manager.changeToAnt();
                 }
                 else
@@ -110,13 +114,12 @@ public class PlayerNivel2 : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "knife")
-            manager.TimeEnd();
+        {
+            audioManager.Play("KnifeHit");
+            StartCoroutine(manager.TimeEnd());
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-    }
 
 
 

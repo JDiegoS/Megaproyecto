@@ -12,13 +12,20 @@ public class PlayerNivel3 : MonoBehaviour
     public CharacterController controller;
     public Animator animator;
     public bool safe;
-    private NavMeshObstacle navObstacle;
+    public Image cooldown;
+    public Slider danger;
+    public GameObject[] bats;
+    public AudioManager audioManager;
+    public NavMeshObstacle navObstacle;
 
     public bool usedDodge;
+    public bool inZone = true;
     private float dodgedTime = 0;
+    private float dangerVal = 0;
 
     private void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         navObstacle = gameObject.GetComponent<NavMeshObstacle>();
     }
     private void Update()
@@ -26,6 +33,7 @@ public class PlayerNivel3 : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !usedDodge)
         {
             animator.SetBool("crouch", true);
+            audioManager.Play("Evadir");
             safe = true;
             navObstacle.enabled = true;
             usedDodge = true;
@@ -35,24 +43,59 @@ public class PlayerNivel3 : MonoBehaviour
         if (usedDodge)
         {
             dodgedTime += Time.deltaTime;
+            cooldown.fillAmount = dodgedTime / 10;
         }
 
-        if (dodgedTime > 5f)
+        if (dodgedTime > 10f)
         {
             usedDodge = false;
             dodgedTime = 0;
+            cooldown.fillAmount = 1;
+        }
+
+        if (!safe)
+        {
+            dangerVal = GetClosestEnemy(bats);
+            if (dangerVal <= 15)
+            {
+                danger.value = 1;
+            }
+            else
+                danger.value = 15/dangerVal;
+        }
+        else
+        {
+            danger.value = 0;
         }
 
     }
 
-
+    float GetClosestEnemy(GameObject[] enemies)
+    {
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (GameObject g in enemies)
+        {
+            Vector3 t = g.transform.position;
+            float dist = Vector3.Distance(t, currentPos);
+            if (dist < minDist)
+            {
+                minDist = dist;
+            }
+        }
+        return minDist;
+    }
 
     IEnumerator DodgeEffect()
     {
-        yield return new WaitForSeconds(2);
-        navObstacle.enabled = false;
-            animator.SetBool("crouch", false);
-        safe = false;
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("crouch", false);
+        yield return new WaitForSeconds(1f);
+        if (!inZone)
+        {
+            navObstacle.enabled = false;
+            safe = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,6 +104,7 @@ public class PlayerNivel3 : MonoBehaviour
         {
             navObstacle.enabled = true;
             safe = true;
+            inZone = true;
         }
     }
 
@@ -70,6 +114,7 @@ public class PlayerNivel3 : MonoBehaviour
         {
             navObstacle.enabled = false;
             safe = false;
+            inZone = false;
         }
     }
 

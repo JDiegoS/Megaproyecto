@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Nivel2 : MonoBehaviour
@@ -14,7 +15,11 @@ public class Nivel2 : MonoBehaviour
     public AudioManager audioManager;
     public GameManager manager;
     public GameObject player1;
+    public GameObject firstObjective;
+    public GameObject secondObjective;
     public int totalItems = 4;
+    public GameObject interaction;
+    public Animator fade;
 
     private CharacterController player1cc;
     private CharacterController ant1cc;
@@ -35,6 +40,7 @@ public class Nivel2 : MonoBehaviour
     {
         Time.timeScale = 1;
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager.wonPelota = false;
 
         player1cc = player1.GetComponent<CharacterController>();
         ant1cc = ant.GetComponent<CharacterController>();
@@ -42,6 +48,18 @@ public class Nivel2 : MonoBehaviour
         antscript = ant.GetComponent<PlayerController>();
         player1lvl = player1.GetComponent<PlayerNivel2>();
         antlvl = ant.GetComponent<PlayerNivel2>();
+
+        if (audioManager.currentScene != 2)
+        {
+            if (audioManager.currentVideo != 2)
+            {
+                audioManager.Stop("Nivel2");
+                audioManager.currentVideo = 2;
+                SceneManager.LoadScene("Videos");
+            }
+            else
+                StartCoroutine(PlayTutorial());
+        }
     }
 
 
@@ -69,6 +87,13 @@ public class Nivel2 : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator PlayTutorial()
+    {
+        yield return new WaitForSeconds(1);
+        audioManager.currentScene = 2;
+        manager.Tutorial();
     }
 
     public void changeToAnt()
@@ -101,12 +126,24 @@ public class Nivel2 : MonoBehaviour
         audioManager.Play("Collect");
         itemsCollected += 1;
         counterText.text = itemsCollected + "/" + totalItems;
-
+        if (itemsCollected >= totalItems)
+        {
+            interaction.SetActive(true);
+            firstObjective.SetActive(false);
+            secondObjective.SetActive(true);
+        }
     }
 
     public IEnumerator TimeEnd()
     {
-        yield return new WaitForSeconds(2);
+        ended = true;
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
         manager.Defeat();
 
     }
@@ -114,7 +151,13 @@ public class Nivel2 : MonoBehaviour
     public IEnumerator WonGame()
     {
         ended = true;
-        yield return new WaitForSeconds(2);
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + 2f;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
         manager.JuegoPelota();
 
 

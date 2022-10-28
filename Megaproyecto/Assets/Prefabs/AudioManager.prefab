@@ -70,13 +70,13 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Click
-    clip: {fileID: 8300000, guid: c031943e07ed6314d921905b3010eb7b, type: 3}
+    clip: {fileID: 8300000, guid: 334f97754b4e95d4fbac4d105189a477, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Hover
-    clip: {fileID: 8300000, guid: 65090634f9898f148906397260e5c63c, type: 3}
+    clip: {fileID: 8300000, guid: c031943e07ed6314d921905b3010eb7b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -135,4 +135,42 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Correr
+    clip: {fileID: 8300000, guid: b39c3ac590eea7f4896963b708a13132, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Pegar
+    clip: {fileID: 8300000, guid: cb8752efabf636f45bc5430617c78fd1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gol
+    clip: {fileID: 8300000, guid: ace8798d6af506d49a27db076b1d8acf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Knife
+    clip: {fileID: 8300000, guid: 8381be3e6d4763c4386b560d68413182, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: KnifeHit
+    clip: {fileID: 8300000, guid: 9cd90e72077750243b540e24d883ba38, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pluma
+    clip: {fileID: 8300000, guid: dbc7c46bb7005914580161b1b531b217, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   playingBackground: 
+  currentScene: 0
+  volume: 1

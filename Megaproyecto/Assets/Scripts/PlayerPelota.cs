@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerPelota : MonoBehaviour
 {
 
+    public AudioManager audioManager;
     public CharacterController controller;
 
     public Animator animator;
@@ -19,6 +20,7 @@ public class PlayerPelota : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         controller = GetComponent<CharacterController>();   
     }
 
@@ -57,6 +59,7 @@ public class PlayerPelota : MonoBehaviour
 
         if (hit.gameObject.tag == "ball")
         {
+            audioManager.Play("Pegar");
             animator.SetBool("hit", true);
             StartCoroutine(StopHit());
 
@@ -70,7 +73,6 @@ public class PlayerPelota : MonoBehaviour
                 forceD.z = 0;
                 if (fired)
                 {
-                    Debug.Log("fireeed");
 
                     forceA = 4;
                     //forceD.y *= 4;
