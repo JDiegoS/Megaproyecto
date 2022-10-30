@@ -7,12 +7,12 @@ public class Pluma : MonoBehaviour
     public Nivel1 manager;
 
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.tag == "item")
+        if (other.gameObject.tag == "item")
         {
-            Destroy(hit.gameObject);
             manager.AddTime();
+            Destroy(other.gameObject);
             return;
         }
     }

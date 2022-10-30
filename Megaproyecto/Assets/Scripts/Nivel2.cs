@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class Nivel2 : MonoBehaviour
 {
+
+    public GameObject[] HardKnives;
+
     //public TMP_Text timeText;
     public GameObject timer;
     public TMP_Text counterText;
@@ -32,7 +35,6 @@ public class Nivel2 : MonoBehaviour
 
     public int itemsCollected = 0;
     public float timeRemaining = 100;
-    float degrees = 0;
     private bool ended = false;
 
 
@@ -63,10 +65,9 @@ public class Nivel2 : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
+
         if (!ended)
         {
             timeRemaining -= Time.deltaTime;

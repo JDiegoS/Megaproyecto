@@ -725,8 +725,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.030468, y: 1.7443271, z: 1.0230558}
-  m_Center: {x: 0.007229805, y: 1, z: 0.16992915}
+  m_Size: {x: 0.8984575, y: 1.7443271, z: 0.73631287}
+  m_Center: {x: 0.02204752, y: 1, z: 0.09928727}
 --- !u!114 &8362398667005537901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +748,8 @@ MonoBehaviour:
   player: {fileID: 0}
   agent: {fileID: 1069411168}
   playerManager: {fileID: 0}
+  chasing: 0
+  target: {x: 0, y: 0, z: 0}
 --- !u!54 &8362398667005537872
 Rigidbody:
   m_ObjectHideFlags: 0

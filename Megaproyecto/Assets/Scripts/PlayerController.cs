@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isAnt = false;
 
     private Vector3 moveTo;
-    private bool grounded;
+    public bool grounded;
     private bool playedGrounded;
 
 

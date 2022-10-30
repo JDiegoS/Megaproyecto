@@ -63,6 +63,14 @@ public class JuegoPelota : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            scoreTeam1();
+        }
+    }
+
     public IEnumerator LostGame()
     {
         Time.timeScale = 0f;

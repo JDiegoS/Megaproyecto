@@ -18,7 +18,7 @@ public class Nivel1 : MonoBehaviour
     public GameManager manager;
 
     private int itemsCollected = 0;
-    private float timeRemaining = 20;
+    private float timeRemaining = 30;
     //private float totalTime= 20;
     private bool ended = false;
 
@@ -44,11 +44,12 @@ public class Nivel1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!ended)
         {
             //totalTime -= Time.deltaTime;
             timeRemaining -= Time.deltaTime;
-            timer.transform.Rotate(0, 0, (9f * Time.deltaTime));
+            timer.transform.Rotate(0, 0, (6f * Time.deltaTime));
         }
         if (timeRemaining <= 0)
         {
@@ -78,7 +79,7 @@ public class Nivel1 : MonoBehaviour
         audioManager.Play("Pluma");
 
         timeRemaining += 10;
-        timer.transform.Rotate(0, 0, -90f);
+        timer.transform.Rotate(0, 0, -60f);
         itemsCollected += 1;
         counterText.text = itemsCollected + "/" + totalItems;
         if (itemsCollected == 5)

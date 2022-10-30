@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject TutorialMenu;
+    public GameObject OptionsMenu;
     public GameObject MainUI;
     public GameObject Derrota;
     public Slider audioSlider;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         MainUI.SetActive(true);
         TutorialMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
         PauseMenu.SetActive(false);
     }
 

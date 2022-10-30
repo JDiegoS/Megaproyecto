@@ -6,13 +6,12 @@ public class Flor : MonoBehaviour
 {
     public Nivel2 manager;
 
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerEnter(Collider other)
     {
-        if (hit.gameObject.tag == "item")
+        if (other.gameObject.tag == "item")
         {
-            Destroy(hit.gameObject);
             manager.CollectItem();
+            Destroy(other.gameObject);
             return;
         }
     }

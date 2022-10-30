@@ -43,10 +43,10 @@ public class PlayerNivel3 : MonoBehaviour
         if (usedDodge)
         {
             dodgedTime += Time.deltaTime;
-            cooldown.fillAmount = dodgedTime / 10;
+            cooldown.fillAmount = dodgedTime / 7;
         }
 
-        if (dodgedTime > 10f)
+        if (dodgedTime > 7f)
         {
             usedDodge = false;
             dodgedTime = 0;
@@ -56,12 +56,12 @@ public class PlayerNivel3 : MonoBehaviour
         if (!safe)
         {
             dangerVal = GetClosestEnemy(bats);
-            if (dangerVal <= 15)
+            if (dangerVal <= 13)
             {
                 danger.value = 1;
             }
             else
-                danger.value = 15/dangerVal;
+                danger.value = 13/dangerVal;
         }
         else
         {
@@ -88,9 +88,9 @@ public class PlayerNivel3 : MonoBehaviour
 
     IEnumerator DodgeEffect()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         animator.SetBool("crouch", false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         if (!inZone)
         {
             navObstacle.enabled = false;

@@ -49,7 +49,7 @@ public class PlayerNivel2 : MonoBehaviour
 
                 }
             }
-            if (closeJarron && manager.itemsCollected == 4)
+            if (closeJarron && manager.itemsCollected >= 4)
             {
                 flores.SetActive(true);
                 StartCoroutine(WinGame());

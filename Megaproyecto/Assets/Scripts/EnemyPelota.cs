@@ -15,6 +15,7 @@ public class EnemyPelota : MonoBehaviour
     public AudioManager audioManager;
     public GameObject ball;
 
+    private bool resetStuck = false;
     private bool lookingLeft = true;
     private Rigidbody rb;
     private Rigidbody ballRb;
@@ -34,7 +35,11 @@ public class EnemyPelota : MonoBehaviour
     void Update()
     {
 
-        
+        if (transform.position == stuckPosition.position && !resetStuck)
+        {
+            resetStuck = true;
+            StartCoroutine(FixStuck());
+        }
 
         if (!chasing)
         {
@@ -134,10 +139,27 @@ public class EnemyPelota : MonoBehaviour
         }
     }
 
-    IEnumerator StopHit()
+    private IEnumerator StopHit()
     {
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("hit", false);
+    }
+
+    private IEnumerator FixStuck()
+    {
+        yield return new WaitForSeconds(5);
+        if (transform.position == stuckPosition.position)
+        {
+            grounded = false;
+            animator.SetBool("jump", true);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(right, ForceMode.Impulse);
+            if (Mathf.Abs(ball.transform.position.x - transform.position.x) <= 0.2f && ball.transform.position.y < 0)
+            {
+                rb.AddForce(right, ForceMode.Impulse);
+            }
+        }
+        resetStuck = false;
     }
 
     private void OnTriggerEnter(Collider other)

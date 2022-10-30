@@ -16,17 +16,43 @@ public class VideoManager : MonoBehaviour
     public GameObject video7;
     public GameObject video8;
 
+    private Coroutine coroutine;
+
     private void Start()
     {
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (audioManager.currentScene == 0)
-            StartCoroutine(Nivel1());
+            coroutine = StartCoroutine(Nivel1());
         else if (audioManager.currentScene == 1)
-            StartCoroutine(Nivel2());
+            coroutine = StartCoroutine(Nivel2());
         else if (audioManager.currentScene == 2)
-            StartCoroutine(Nivel3());
+            coroutine = StartCoroutine(Nivel3());
         else
-            StartCoroutine(Final());
+            coroutine = StartCoroutine(Final());
+    }
+
+    public void StopVideo()
+    {
+        StopCoroutine(coroutine);
+        if (audioManager.currentScene == 0)
+        {
+             manager.Nivel1();
+        }
+        else if (audioManager.currentScene == 1)
+        {
+            manager.Nivel2();
+        }
+        else if (audioManager.currentScene == 2)
+        {
+            manager.Nivel3();
+        }
+        else
+        {
+            manager.Home();
+            audioManager.currentScene = 0;
+            audioManager.currentVideo = 0;
+            audioManager.wonPelota = false;
+        }
     }
 
     public IEnumerator Nivel1()
